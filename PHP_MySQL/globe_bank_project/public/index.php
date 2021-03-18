@@ -7,6 +7,7 @@
   </head>
 
   <body>
-   <h1> Globe Bank Comming Soon! </h1>
+   <h1> Globe Bank Commin
+   g Soon! </h1>
   </body>
 </html>
