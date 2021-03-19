@@ -4,6 +4,11 @@
 
 
 <div id="content">
+    <div class="" id="main__menu">
+        <ul>
+            <li><a href="/subjects/index.php">Subjects</a></li>
+        </ul>
+    </div>
 </div>
 
 <?php include SHARED_PATH . "/staff__footer.php";?>
