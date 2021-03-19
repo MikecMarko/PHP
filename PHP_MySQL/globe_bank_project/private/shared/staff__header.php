@@ -20,6 +20,6 @@ if (!isset($page_title)) {
 
     <navigation>
         <ul>
-            <li><a href="index.php">Menu</a></li>
+            <li><a href=<?php echo "../index.php" ?>>Menu</a></li>
         </ul>
     </navigation>
