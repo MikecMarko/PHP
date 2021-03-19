@@ -1,12 +1,9 @@
-------------------------<!doctype html>
+<?php require_once "../../../private/initialize.php";?>
+<?php $page_title = "Subjects menu";?>
+<?php include SHARED_PATH . "/staff__header.php";?>
 
-<html lang="en">
-  <head>
-    <title></title>
-    <meta charset="utf-8">
-  </head>
 
-  <body>
+<div id="content">
+</div>
 
-  </body>
-</html>
+<?php include SHARED_PATH . "/staff__footer.php";?>
