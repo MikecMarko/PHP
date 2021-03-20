@@ -6,7 +6,7 @@
 <div id="content">
     <div class="" id="main__menu">
         <ul>
-            <li><a href="/subjects/index.php">Subjects</a></li>
+            <li><a href="subjects/index.php">Subjects</a></li>
         </ul>
     </div>
 </div>
