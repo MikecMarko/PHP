@@ -2,6 +2,7 @@
 function url_for($script_path)
 {
 // add the leading '/' if not present
+    // represents the path to the root of the folder
     if ($script_path[0] != '/') {
         $script_path = "/" . $script_path;
     }

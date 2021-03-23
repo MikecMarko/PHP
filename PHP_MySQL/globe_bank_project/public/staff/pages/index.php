@@ -15,11 +15,12 @@ $page_title = 'Pages';
 ?>
 
 <?php include SHARED_PATH . '/staff__header.php';?>
+
 <div id="content">
     <div class="pages__listing">
         <h1>Pages</h1>
         <div class="action">
-            <a class="action" href="">Add a page</a>
+            <a class="action" href="">Create a new page</a>
         </div>
         <br>
         <table class="list">
@@ -34,11 +35,12 @@ $page_title = 'Pages';
             </tr>
             <tr>
                 <?php foreach ($pages as $page) {?>
-                <td> <?php echo $page['id'] ?> </td>
-                <td> <?php echo $page['position'] ?> </td>
+                <td> <?php echo h($page['id']) ?> </td>
+                <td> <?php echo h($page['position']) ?> </td>
                 <td> <?php echo $page['visible'] == 1 ? 'true' : 'false' ?> </td>
-                <td> <?php echo $page['name'] ?> </td>
-                <td> <a class="action" href="<?php echo url_for("/staff/pages/show.php?id=" . $page['id']) ?>">View</a>
+                <td> <?php echo h($page['name']) ?> </td>
+                <td> <a class="action"
+                        href="<?php echo url_for("/staff/pages/show.php?id=" . h(u($page['id']))) ?>">View</a>
                 </td>
                 <td> <a href="">Edit</a> </td>
                 <td> <a href="">Delete</a> </td>
