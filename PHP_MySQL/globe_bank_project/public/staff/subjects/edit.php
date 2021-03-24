@@ -11,14 +11,14 @@ if ($test == '404') {
 }
 ?>
 
-<?php $page_title = 'Create Subject';?>
+<?php $page_title = 'Edit Subject';?>
 <?php include SHARED_PATH . '/staff__header.php';?>
 
 <div id="content">
 
     <a class="page__back" href="<?php echo url_for('staff/subjects/index.php') ?>">&laquo; Back to Subjects</a>
-    <div class="subject__new">
-        <h1>Create a subject</h1>
+    <div class="subject__edit">
+        <h1>Edit a subject</h1>
         <form action="" method="post">
             <dl>
                 <dt>Menu Name</dt>
@@ -41,7 +41,7 @@ if ($test == '404') {
                 </dd>
             </dl>
             <div id="operations">
-                <input type="submit" value="Create Subject">
+                <input type="submit" value="Edit Subject">
             </div>
 
         </form>

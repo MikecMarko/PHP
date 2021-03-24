@@ -17,7 +17,7 @@ $subjects = [
     <div class="subject__listing">
         <h1> Subjects </h1>
         <div class="actions">
-            <a class="action" href="">Create new subject</a>
+            <a class="action" href="<?php echo url_for('staff/subjects/new.php') ?>">Create new subject</a>
         </div>
         <table class="list">
             <tr>
