@@ -15,24 +15,25 @@ if (is_post_request()) {
     $position = $_POST['position'];
     $visible = $_POST['visible'];
 
-    echo "Form parameters are as follow: ";
-    echo "Page name: " . $name;
-    echo "Page position: " . $position;
-    echo "Page visibility: " . $visible;
+    echo "Form Parameters  " . "<br />";
+    echo "Page name: " . $name . "<br />";
+    echo "Page position: " . $position . "<br />";
+    echo "Page visibility: " . $visible . "<br />";
 }
 $page_title = "Edit the page";
 include SHARED_PATH . '/staff__header.php';
 ?>
 <div id="content">
     <div class="content__back">
-        <a class="content__page__back" href="<?php echo url_for('/staff/subjects/index.php') ?>"></a>
+        <a class="content__page__back" href="<?php echo url_for('/staff/pages/index.php') ?>">&laquo; Back to
+            pages</a>
     </div>
     <div class="content__page__new">
         <h1>Edit a page</h1>
-        <form action="<?php echo url_for('/staff/pages/create.php') ?>" method="post">
+        <form action="<?php echo url_for('/staff/pages/edit.php?id=' . h(u($id))) ?>" method="post">
             <dl>
                 <dt>Page Name</dt>
-                <dd><input type="text" name="menu_name" value=""></dd>
+                <dd><input type="text" name="name" value=""></dd>
             </dl>
             <dl>
                 <dt>Position</dt>

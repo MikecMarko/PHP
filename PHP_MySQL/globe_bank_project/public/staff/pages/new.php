@@ -1,5 +1,9 @@
 <?php require_once "../../../private/initialize.php";
 
+$name = '';
+$position = '';
+$visible = '';
+
 if (is_post_request()) {
 // handling of form values sent by new.php
 
@@ -27,13 +31,13 @@ if (is_post_request()) {
         <form action="<?php echo url_for('/staff/pages/new.php') ?>" method="post">
             <dl>
                 <dt>Page Name</dt>
-                <dd><input type="text" name="name" value=""></dd>
+                <dd><input type="text" name="name" value="<?php echo h($name); ?>"></dd>
             </dl>
             <dl>
                 <dt>Position</dt>
                 <dd>
-                    <select name="position" id="">
-                        <option value="1">1</option>
+                    <select name="position">
+                        <option value="1" <?php if ($position == "1") {echo "selected";}?>>1</option>
 
                     </select>
                 </dd>
