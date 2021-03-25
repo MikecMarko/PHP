@@ -50,3 +50,15 @@ function redirect_to($location)
     header("Location: " . $location);
     exit();
 };
+
+// Functions to check what is our submitting method (REQUEST)
+
+function is_post_request()
+{
+    return $_SERVER['REQUEST_METHOD'] == 'POST';
+}
+
+function is_get_request()
+{
+    return $_SERVER['REQUEST_METHOD'] == 'GET';
+}
