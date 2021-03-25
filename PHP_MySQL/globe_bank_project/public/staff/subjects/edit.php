@@ -34,13 +34,13 @@ if (is_post_request()) {
         <form action="<?php echo url_for('staff/subjects/edit.php?id=' . h(u($id))) ?>" method="post">
             <dl>
                 <dt>Menu Name</dt>
-                <dd><input type="text" name="menu_name" value="<?php echo $menu_name; ?>"></dd>
+                <dd><input type="text" name="menu_name" value="<?php echo $menu_name ?>"></dd>
             </dl>
             <dl>
                 <dt>Position</dt>
                 <dd>
                     <select name="position" id="">
-                        <option value="1">1</option>
+                        <option value="<?php echo $position; ?>">1</option>
 
                     </select>
                 </dd>

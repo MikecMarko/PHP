@@ -1,12 +1,16 @@
 <?php require_once "../../../private/initialize.php";
-$test = $_GET['test'] ?? '';
-if ($test == '404') {
-    error_404();
-} elseif ($test == '500') {
-    error_500();
-} elseif ($test == 'redirect') {
-    redirect_to(url_for('/staff/subjects/index'));
-    exit();
+
+if (is_post_request()) {
+// handling of form values sent by new.php
+
+    $name = $_POST['name'] ?? '';
+    $position = $_POST['position'] ?? '';
+    $visible = $_POST['visible'] ?? '';
+
+    echo "Form Parameters <br />";
+    echo "Menu name: " . $name . "<br />";
+    echo "Position: " . $position . "<br />";
+    echo "Visible: " . $visible . "<br />";
 }
 ?>
 
@@ -16,14 +20,14 @@ if ($test == '404') {
 <div id="content">
 
     <div class="content__back">
-        <a class="content__page__back" href="<?php echo url_for('/staff/subjects/index.php') ?>"></a>
+        <a class="content__page__back" href="<?php echo url_for('/staff/pages/index.php') ?>">&laquo; Back to pages</a>
     </div>
     <div class="content__page__new">
         <h1>Create a new page</h1>
-        <form action="<?php echo url_for('/staff/pages/create.php') ?>">
+        <form action="<?php echo url_for('/staff/pages/new.php') ?>" method="post">
             <dl>
                 <dt>Page Name</dt>
-                <dd><input type="text" name="menu_name" value=""></dd>
+                <dd><input type="text" name="name" value=""></dd>
             </dl>
             <dl>
                 <dt>Position</dt>
