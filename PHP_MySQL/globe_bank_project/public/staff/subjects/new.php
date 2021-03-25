@@ -16,7 +16,9 @@ if ($test == '404') {
 
 <div id="content">
 
-    <a class="page__back" href="<?php echo url_for('staff/subjects/index.php') ?>">&laquo; Back to Subjects</a>
+    <div class="content__back"><a class="content__page__back"
+            href="<?php echo url_for('staff/subjects/index.php') ?>">&laquo; Back to
+            Subjects</a></div>
     <div class="subject__new">
         <h1>Create a subject</h1>
         <form action="<?php echo url_for('/staff/subjects/create.php') ?>" method="post">

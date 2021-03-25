@@ -20,7 +20,7 @@ $page_title = 'Pages';
     <div class="pages__listing">
         <h1>Pages</h1>
         <div class="action">
-            <a class="action" href="">Create a new page</a>
+            <a class="action" href="<?php echo url_for('/staff/pages/new.php'); ?>">Create a new page</a>
         </div>
         <br>
         <table class="list">
