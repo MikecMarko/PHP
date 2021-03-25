@@ -42,7 +42,7 @@ $page_title = 'Pages';
                 <td> <a class="action"
                         href="<?php echo url_for("/staff/pages/show.php?id=" . h(u($page['id']))) ?>">View</a>
                 </td>
-                <td> <a href="">Edit</a> </td>
+                <td> <a href="<?php echo url_for("/staff/pages/edit.php?id=" . h(u($page['id']))) ?>">Edit</a> </td>
                 <td> <a href="">Delete</a> </td>
             </tr>
             <?php }?>
