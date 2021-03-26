@@ -1,5 +1,9 @@
 <?php require_once "../../../private/initialize.php";
 
+$menu_name = '';
+$position = '';
+$visible = '';
+
 if (is_post_request()) {
     // handling of form values sent by new.php
 
@@ -28,13 +32,13 @@ if (is_post_request()) {
         <form action="<?php echo url_for('/staff/subjects/new.php') ?>" method="post">
             <dl>
                 <dt>Menu Name</dt>
-                <dd><input type="text" name="menu_name" value=""></dd>
+                <dd><input type="text" name="menu_name" value="<?php echo h($menu_name); ?>"></dd>
             </dl>
             <dl>
                 <dt>Position</dt>
                 <dd>
                     <select name="position" id="">
-                        <option value="1">1</option>
+                        <option value="1" <?php if ($position == "1") {echo "selected";}?>>1</option>
 
                     </select>
                 </dd>
@@ -43,7 +47,7 @@ if (is_post_request()) {
                 <dt>Visible</dt>
                 <dd>
                     <input type="hidden" name="visible" value="0" />
-                    <input type="checkbox" name="visible" value="1" />
+                    <input type="checkbox" name="visible" value="1" <?php if ($visible == "1") {echo "checked";}?> />
                 </dd>
             </dl>
             <div id="operations">

@@ -33,13 +33,13 @@ include SHARED_PATH . '/staff__header.php';
         <form action="<?php echo url_for('/staff/pages/edit.php?id=' . h(u($id))) ?>" method="post">
             <dl>
                 <dt>Page Name</dt>
-                <dd><input type="text" name="name" value=""></dd>
+                <dd><input type="text" name="name" value="<?php echo h($name) ?>"></dd>
             </dl>
             <dl>
                 <dt>Position</dt>
                 <dd>
                     <select name="position" id="">
-                        <option value="1">1</option>
+                        <option value="1" <?php if ($position == "1") {echo "selected";}?>>1</option>
 
                     </select>
                 </dd>
@@ -48,7 +48,7 @@ include SHARED_PATH . '/staff__header.php';
                 <dt>Visible</dt>
                 <dd>
                     <input type="hidden" name="visible" value="0" />
-                    <input type="checkbox" name="visible" value="1" />
+                    <input type="checkbox" name="visible" value="1" <?php if ($visible == "1") {echo "checked";}?> />
                 </dd>
             </dl>
             <div id="operations">
