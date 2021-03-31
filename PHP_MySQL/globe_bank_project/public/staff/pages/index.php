@@ -4,8 +4,6 @@ require_once "../../../private/initialize.php";
 
 <?php
 
-$sql = "SELECT * FROM pages ";
-$sql .= "ORDER BY position ASC";
 $page_set = find_all_pages();
 ?>
 <?php
@@ -24,6 +22,7 @@ $page_title = 'Pages';
         <table class="list">
             <tr>
                 <th>Id</th>
+                <th>Subject Id</th>
                 <th>Position</th>
                 <th>Visible</th>
                 <th>Name</th>
@@ -34,6 +33,7 @@ $page_title = 'Pages';
             <tr>
                 <?php while ($page = mysqli_fetch_assoc($page_set)) {?>
                 <td> <?php echo h($page['id']) ?> </td>
+                <td> <?php echo h($page['subject_id']) ?> </td>
                 <td> <?php echo h($page['position']) ?> </td>
                 <td> <?php echo $page['visible'] == 1 ? 'true' : 'false' ?> </td>
                 <td> <?php echo h($page['name']) ?> </td>

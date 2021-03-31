@@ -3,8 +3,6 @@
 
 <?php
 
-$sql = "SELECT * FROM subjects ";
-$sql .= "ORDER BY position ASC";
 $subject_set = find_all_subjects();
 
 ?>
