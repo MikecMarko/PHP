@@ -1,8 +1,5 @@
-<?php require_once "../../../private/initialize.php";
-
-$menu_name = '';
-$position = '';
-$visible = '';
+<?php require_once "../../../private/initialize.php";?>
+<?php
 
 if (is_post_request()) {
     // handling of form values sent by new.php
@@ -11,16 +8,17 @@ if (is_post_request()) {
     $position = $_POST['position'] ?? '';
     $visible = $_POST['visible'] ?? '';
 
-    echo "Form Parameters <br />";
-    echo "Menu name: " . $menu_name . "<br />";
-    echo "Position: " . $position . "<br />";
-    echo "Visible: " . $visible . "<br />";
+    $result = insert_subject($menu_name, $position, $visible);
+    $new_id = mysqli_insert_id($db);
+    redirect_to(url_for('/staff/subjects/show.php?id?' . $new_id));
+
+} else {
+    redirect_to(url_for('/staff/subjects/show.php'));
 }
-
 ?>
-
 <?php $page_title = 'Create Subject';?>
 <?php include SHARED_PATH . '/staff__header.php';?>
+
 
 <div id="content">
 
@@ -58,5 +56,7 @@ if (is_post_request()) {
     </div>
 
 </div>
+
+
 
 <?php include SHARED_PATH . '/staff__footer.php'?>
