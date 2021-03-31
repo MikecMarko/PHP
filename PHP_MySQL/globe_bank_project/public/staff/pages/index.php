@@ -3,12 +3,10 @@ require_once "../../../private/initialize.php";
 ?>
 
 <?php
-$pages = [
-    ['id' => '1', 'position' => '1', 'visible' => 1, 'name' => 'Page no. 1'],
-    ['id' => '2', 'position' => '2', 'visible' => 1, 'name' => 'Page no. 2'],
-    ['id' => '3', 'position' => '3', 'visible' => 0, 'name' => 'Page no. 3'],
-    ['id' => '4', 'position' => '4', 'visible' => 1, 'name' => 'Page no. 4'],
-]
+
+$sql = "SELECT * FROM pages ";
+$sql .= "ORDER BY position ASC";
+$page_set = find_all_pages();
 ?>
 <?php
 $page_title = 'Pages';
@@ -34,7 +32,7 @@ $page_title = 'Pages';
                 <th>&nbsp;</th>
             </tr>
             <tr>
-                <?php foreach ($pages as $page) {?>
+                <?php while ($page = mysqli_fetch_assoc($page_set)) {?>
                 <td> <?php echo h($page['id']) ?> </td>
                 <td> <?php echo h($page['position']) ?> </td>
                 <td> <?php echo $page['visible'] == 1 ? 'true' : 'false' ?> </td>
@@ -47,6 +45,7 @@ $page_title = 'Pages';
             </tr>
             <?php }?>
         </table>
+        <?php mysqli_free_result($page_set)?>
     </div>
 </div>
 <?php include SHARED_PATH . '/staff__footer.php';?>
