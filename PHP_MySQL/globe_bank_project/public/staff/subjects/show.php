@@ -23,13 +23,8 @@ require_once '../../../private/initialize.php';
 
 $id = $_GET['id'] ?? '1';
 
-$sql = "SELECT * FROM subjects ";
-$sql .= "WHERE id='" . $id . "'";
-$result = mysqli_query($db, $sql);
-confirm_result_set($result);
+$subject = find_subject_by_id($id);
 
-$subject = mysqli_fetch_assoc($result);
-mysqli_free_result($result);
 ?>
         <!-- Showing result -->
         <h1>Subject: <?php echo h($subject['menu_name']); ?></h1>
@@ -44,7 +39,7 @@ mysqli_free_result($result);
             </dl>
             <dl>
                 <dt>Visible</dt>
-                <dd><?php echo h($subject['visible']); ?> </dd>
+                <dd><?php echo h($subject['visible'] == '1' ? 'true' : 'false'); ?> </dd>
             </dl>
         </div>
     </div>
