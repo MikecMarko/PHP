@@ -5,26 +5,27 @@ if (!isset($_GET['id'])) {
 }
 
 $id = $_GET['id'];
-$menu_name = '';
-$position = '';
-$visible = '';
+$subject = find_subject_by_id($id);
 
 if (is_post_request()) {
     // handling of form values sent by new.php
+    $subject = [];
+    $subject['id'] = $id;
+    $subject['menu_name'] = $_POST['menu_name'] ?? '';
+    $subject['position'] = $_POST['position'] ?? '';
+    $subject['visible'] = $_POST['visible'] ?? '';
 
-    $menu_name = $_POST['menu_name'] ?? '';
-    $position = $_POST['position'] ?? '';
-    $visible = $_POST['visible'] ?? '';
+    $result = update_subject($subject);
 
-    echo "Form Parameters <br />";
-    echo "Menu name: " . $menu_name . "<br />";
-    echo "Position: " . $position . "<br />";
-    echo "Visible: " . $visible . "<br />";
+    redirect_to(url_for('/staff/subjects/show.php?id=' . $id));
+} else {
+    $subject = find_subject_by_id($id);
 }
 ?>
 
-<?php $page_title = 'Edit Subject';?>
-<?php include SHARED_PATH . '/staff__header.php';?>
+<?php $page_title = 'Edit Subject'; ?>
+<?php include SHARED_PATH . '/staff__header.php'; ?>
+
 
 <div id="content">
 
@@ -34,13 +35,15 @@ if (is_post_request()) {
         <form action="<?php echo url_for('staff/subjects/edit.php?id=' . h(u($id))) ?>" method="post">
             <dl>
                 <dt>Menu Name</dt>
-                <dd><input type="text" name="menu_name" value="<?php echo h($menu_name) ?>"></dd>
+                <dd><input type="text" name="menu_name" value="<?php echo h($subject['menu_name']) ?>"></dd>
             </dl>
             <dl>
                 <dt>Position</dt>
                 <dd>
                     <select name="position" id="">
-                        <option value="1" <?php if ($position == "1") {echo "selected";}?>>1</option>
+                        <option value="1" <?php if ($subject['position'] == "1") {
+                                                echo "selected";
+                                            } ?>>1</option>
                     </select>
                 </dd>
             </dl>
@@ -48,7 +51,9 @@ if (is_post_request()) {
                 <dt>Visible</dt>
                 <dd>
                     <input type="hidden" name="visible" value="0" />
-                    <input type="checkbox" name="visible" value="1" <?php if ($visible == "1") {echo "checked";}?> />
+                    <input type="checkbox" name="visible" value="1" <?php if ($subject['visible'] == "1") {
+                                                                        echo "checked";
+                                                                    } ?> />
                 </dd>
             </dl>
             <div id="operations">
@@ -60,4 +65,4 @@ if (is_post_request()) {
 
 </div>
 
-<?php include SHARED_PATH . '/staff__footer.php'?>
+<?php include SHARED_PATH . '/staff__footer.php' ?>

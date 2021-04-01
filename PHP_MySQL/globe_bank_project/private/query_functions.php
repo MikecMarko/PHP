@@ -47,6 +47,30 @@ function insert_subject($subject)
     }
 }
 
+function update_subject($subject)
+{
+    global $db;
+
+    $sql = "UPDATE subjects SET ";
+    $sql .= "menu_name='" . $subject['menu_name'] . "',";
+    $sql .= "position='" . $subject['position'] . "',";
+    $sql .= "visible='" . $subject['visible'] . "' ";
+    $sql .= "WHERE id='" . $subject['id'] . "'";
+    $sql .= "LIMIT 1";
+
+    $result = mysqli_query($db, $sql);
+
+    // For update statements the result is true/false
+
+    if ($result) {
+        return true;
+    } else {
+        // if update failed
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit();
+    }
+}
 function find_all_pages()
 {
     // we have to tell it to use global $db because it is not being passed in !, it is not in scope
