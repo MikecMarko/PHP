@@ -5,7 +5,7 @@ function find_all_subjects()
     global $db;
 
     $sql = "SELECT * FROM subjects ";
-    $sql .= "ORDER BY position ASC";
+    $sql .= "ORDER BY ID, position ASC";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     return $result;
@@ -23,12 +23,16 @@ function find_subject_by_id($id)
     return $subject; // which returns an array
 }
 
-function insert_subject($menu_name, $visible, $position)
+function insert_subject($subject)
 {
     global $db;
     $sql = "INSERT INTO subjects ";
     $sql .= "(menu_name, position, visible)";
-    $sql .= "VALUES ('$menu_name', '$position', '$visible')";
+    $sql .= "VALUES (";
+    $sql .= "'" . $subject['menu_name'] . "',";
+    $sql .= "'" . $subject['position'] . "',";
+    $sql .= "'" . $subject['visible'] . "'";
+    $sql .= ")";
 
     $result = mysqli_query($db, $sql);
     // INSERT reslt check
@@ -41,7 +45,6 @@ function insert_subject($menu_name, $visible, $position)
         db_disconnect($db);
         exit;
     }
-
 }
 
 function find_all_pages()

@@ -1,4 +1,7 @@
 {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "kokororin.vscode-phpfmt"
+    "editor.defaultFormatter": "kokororin.vscode-phpfmt",
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    }
 }

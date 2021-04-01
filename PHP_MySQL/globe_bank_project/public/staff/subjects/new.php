@@ -1,23 +1,30 @@
-<?php require_once "../../../private/initialize.php";?>
+<?php require_once "../../../private/initialize.php"; ?>
 <?php
 
 if (is_post_request()) {
     // handling of form values sent by new.php
 
-    $menu_name = $_POST['menu_name'] ?? '';
-    $position = $_POST['position'] ?? '';
-    $visible = $_POST['visible'] ?? '';
+    $subject = [];
+    $subject['menu_name'] = $_POST['menu_name'] ?? '';
+    $subject['position'] = $_POST['position'] ?? '';
+    $subject['visible'] = $_POST['visible'] ?? '';
 
-    $result = insert_subject($menu_name, $position, $visible);
+    $result = insert_subject($subject);
     $new_id = mysqli_insert_id($db);
-    redirect_to(url_for('/staff/subjects/show.php?id?' . $new_id));
-
+    redirect_to(url_for('/staff/subjects/show.php?id=' . $new_id));
 } else {
-    redirect_to(url_for('/staff/subjects/show.php'));
+    $subject = [];
+    $subject['menu_name'] = '';
+    $subject['position'] = '';
+    $subject['visible'] = '';
+
+    $subject_set = find_all_subjects();
+    $subject_count = mysqli_num_rows($subject_set) + 1;
+    mysqli_free_result($subject_set);
 }
 ?>
-<?php $page_title = 'Create Subject';?>
-<?php include SHARED_PATH . '/staff__header.php';?>
+<?php $page_title = 'Create Subject'; ?>
+<?php include SHARED_PATH . '/staff__header.php'; ?>
 
 
 <div id="content">
@@ -30,13 +37,22 @@ if (is_post_request()) {
         <form action="<?php echo url_for('/staff/subjects/new.php') ?>" method="post">
             <dl>
                 <dt>Menu Name</dt>
-                <dd><input type="text" name="menu_name" value="<?php echo h($menu_name); ?>"></dd>
+                <dd><input type="text" name="menu_name" value="<?php echo h($subject['menu_name']); ?>"></dd>
             </dl>
             <dl>
                 <dt>Position</dt>
                 <dd>
                     <select name="position" id="">
-                        <option value="1" <?php if ($position == "1") {echo "selected";}?>>1</option>
+                        <option value="1" <?php
+                                            for ($i = 1; $i <= $subject_count; $i++) {
+                                                echo "<option value=\"{$i}\"";
+                                                if ($subject["position"] == $i) {
+                                                    echo " selected";
+                                                }
+                                                echo ">{$i}</option>";
+                                            }
+                                            ?>>1
+                        </option>
 
                     </select>
                 </dd>
@@ -45,7 +61,9 @@ if (is_post_request()) {
                 <dt>Visible</dt>
                 <dd>
                     <input type="hidden" name="visible" value="0" />
-                    <input type="checkbox" name="visible" value="1" <?php if ($visible == "1") {echo "checked";}?> />
+                    <input type="checkbox" name="visible" value="1" <?php if ($subject['visible'] == "1") {
+                                                                        echo "checked";
+                                                                    } ?> />
                 </dd>
             </dl>
             <div id="operations">
@@ -59,4 +77,4 @@ if (is_post_request()) {
 
 
 
-<?php include SHARED_PATH . '/staff__footer.php'?>
+<?php include SHARED_PATH . '/staff__footer.php' ?>
