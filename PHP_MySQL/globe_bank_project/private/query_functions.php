@@ -1,5 +1,7 @@
 <?php
 
+// FUNCTIONS FOR SUBJECTS
+
 function find_all_subjects()
 {
     // we have to tell it to use global $db because it is not being passed in !, it is not in scope
@@ -93,6 +95,8 @@ function delete_subject($id)
         exit;
     }
 }
+
+// FUNCTIONS FOR PAGES
 
 function find_all_pages()
 {
