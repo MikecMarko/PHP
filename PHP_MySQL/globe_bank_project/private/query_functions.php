@@ -73,6 +73,27 @@ function update_subject($subject)
     }
 }
 
+function delete_subject($id)
+{
+    global $db;
+
+    $sql = "DELETE FROM subjects ";
+    $sql .= "WHERE id='" . $id . "' ";
+    $sql .= "LIMIT 1";
+
+    $result = mysqli_query($db, $sql);
+
+    // True/False check for DELETE statement
+
+    if ($result) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+}
+
 function find_all_pages()
 {
     // we have to tell it to use global $db because it is not being passed in !, it is not in scope
