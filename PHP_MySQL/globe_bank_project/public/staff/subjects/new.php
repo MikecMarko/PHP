@@ -21,6 +21,7 @@ if (is_post_request()) {
     $subject_set = find_all_subjects();
     $subject_count = mysqli_num_rows($subject_set) + 1;
     mysqli_free_result($subject_set);
+    $subject['position'] = $subject_count;
 }
 ?>
 <?php $page_title = 'Create Subject'; ?>
