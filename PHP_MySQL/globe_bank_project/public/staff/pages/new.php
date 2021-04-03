@@ -5,21 +5,36 @@ $position = '';
 $visible = '';
 
 if (is_post_request()) {
-// handling of form values sent by new.php
+    // handling of form values sent by new.php
 
-    $name = $_POST['name'] ?? '';
-    $position = $_POST['position'] ?? '';
-    $visible = $_POST['visible'] ?? '';
+    $page = [];
+    $page['subject_id'] = $_POST['subject_id'] ?? '';
+    $page['name'] = $_POST['name'] ?? '';
+    $page['position'] = $_POST['position'] ?? '';
+    $page['visible'] = $_POST['visible'] ?? '';
+    $page['content'] = $_POST['content'] ?? '';
 
-    echo "Form Parameters <br />";
-    echo "Menu name: " . $name . "<br />";
-    echo "Position: " . $position . "<br />";
-    echo "Visible: " . $visible . "<br />";
+    $result = insert_page($page);
+
+    $new_id = mysqli_insert_id($db);
+
+    redirect_to(url_for('/staff/pages/show.php?id=' . $new_id));
+} else {
+    $page = [];
+    $page['subject_id'] = '';
+    $page['name'] = '';
+    $page['position'] = '';
+    $page['visible'] = '';
+    $page['content'] = '';
+
+    $page_set = find_all_pages();
+    $page_count = mysqli_num_rows($page_set) + 1;
+    mysqli_free_result($page_set);
 }
 ?>
 
-<?php $page_title = "Create a page";?>
-<?php include SHARED_PATH . '/staff__header.php';?>
+<?php $page_title = "Create a page"; ?>
+<?php include SHARED_PATH . '/staff__header.php'; ?>
 
 <div id="content">
 
@@ -37,7 +52,9 @@ if (is_post_request()) {
                 <dt>Position</dt>
                 <dd>
                     <select name="position">
-                        <option value="1" <?php if ($position == "1") {echo "selected";}?>>1</option>
+                        <option value="1" <?php if ($position == "1") {
+                                                echo "selected";
+                                            } ?>>1</option>
 
                     </select>
                 </dd>
@@ -46,7 +63,9 @@ if (is_post_request()) {
                 <dt>Visible</dt>
                 <dd>
                     <input type="hidden" name="visible" value="0" />
-                    <input type="checkbox" name="visible" value="1" <?php if ($visible == "1") {echo "checked";}?> />
+                    <input type="checkbox" name="visible" value="1" <?php if ($visible == "1") {
+                                                                        echo "checked";
+                                                                    } ?> />
                 </dd>
             </dl>
             <div id="operations">
@@ -59,4 +78,4 @@ if (is_post_request()) {
 
     </div>
 </div>
-<?php include SHARED_PATH . '/staff__footer.php'?>
+<?php include SHARED_PATH . '/staff__footer.php' ?>
