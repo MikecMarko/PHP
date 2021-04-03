@@ -137,14 +137,15 @@ function insert_page($page)
     $sql .= "'" . $page['name'] . "',";
     $sql .= "'" . $page['position'] . "',";
     $sql .= "'" . $page['visible'] . "',";
-    $sql .= "'" . $page['content'] . "',";
+    $sql .= "'" . $page['content'] . "'";
     $sql .= ")";
 
     $result = mysqli_query($db, $sql);
-
+    // For INSERT statements, $result is true/false
     if ($result) {
         return true;
     } else {
+        // INSERT failed
         echo mysqli_error($db);
         db_disconnect($db);
         exit;

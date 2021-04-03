@@ -1,8 +1,6 @@
 <?php require_once "../../../private/initialize.php";
 
-$name = '';
-$position = '';
-$visible = '';
+
 
 if (is_post_request()) {
     // handling of form values sent by new.php
@@ -45,17 +43,40 @@ if (is_post_request()) {
         <h1>Create a new page</h1>
         <form action="<?php echo url_for('/staff/pages/new.php') ?>" method="post">
             <dl>
+                <dt>Subject</dt>
+                <dd>
+                    <select name="subject_id">
+                        <?php
+                        $subject_set = find_all_subjects();
+                        while ($subject = mysqli_fetch_assoc($subject_set)) {
+                            echo "<option value=\"" . h($subject['id']) . "\"";
+                            if ($page['subject_id'] == $subject['id']) {
+                                echo " selected";
+                            }
+                            echo ">" . h($subject['menu_name']) . "</option>";
+                        }
+                        mysqli_free_result($subject_set)
+                        ?>
+                    </select>
+                </dd>
+            </dl>
+            <dl>
                 <dt>Page Name</dt>
-                <dd><input type="text" name="name" value="<?php echo h($name); ?>"></dd>
+                <dd><input type="text" name="name" value="<?php echo h($page['name']); ?>"></dd>
             </dl>
             <dl>
                 <dt>Position</dt>
                 <dd>
                     <select name="position">
-                        <option value="1" <?php if ($position == "1") {
-                                                echo "selected";
-                                            } ?>>1</option>
-
+                        <?php
+                        for ($i = 1; $i <= $page_count; $i++) {
+                            echo "<option value=\"{$i}\"";
+                            if ($page["position"] == $i) {
+                                echo " selected";
+                            }
+                            echo ">{$i}</option>";
+                        };
+                        ?>
                     </select>
                 </dd>
             </dl>
@@ -63,9 +84,15 @@ if (is_post_request()) {
                 <dt>Visible</dt>
                 <dd>
                     <input type="hidden" name="visible" value="0" />
-                    <input type="checkbox" name="visible" value="1" <?php if ($visible == "1") {
-                                                                        echo "checked";
+                    <input type="checkbox" name="visible" value="1" <?php if ($page['subject_id'] == "1") {
+                                                                        echo " checked";
                                                                     } ?> />
+                </dd>
+            </dl>
+            <dl>
+                <dt>Content</dt>
+                <dd>
+                    <textarea name="content" cols="60" rows="10"><?php echo h($page['content']); ?></textarea>
                 </dd>
             </dl>
             <div id="operations">
