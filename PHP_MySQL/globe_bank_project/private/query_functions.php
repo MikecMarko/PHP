@@ -162,4 +162,35 @@ function update_page($page)
     $sql .= "content='" . $page['content'] . "', ";
     $sql .= "WHERE id='" . $page['id'] . "' ";
     $sql .= "LIMIT 1";
+
+    $result = mysqli_query($db, $sql);
+
+    // For UPDATE statements, $result is true/false
+
+    if ($result) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+}
+
+function delete_page($id)
+{
+    global $db;
+
+    $sql = "DELETE FROM pages ";
+    $sql .= "WHERE id'" . $id . "', ";
+    $sql .= "LIMIT 1";
+
+    $result = mysqli_query($db, $sql);
+
+    if ($result) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
 }
