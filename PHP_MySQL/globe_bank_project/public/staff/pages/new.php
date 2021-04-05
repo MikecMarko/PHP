@@ -1,7 +1,7 @@
-<?php require_once "../../../private/initialize.php";
+<?php require_once "../../../private/initialize.php"; ?>
 
 
-
+<?php
 if (is_post_request()) {
     // handling of form values sent by new.php
 
@@ -50,12 +50,12 @@ if (is_post_request()) {
                         $subject_set = find_all_subjects();
                         while ($subject = mysqli_fetch_assoc($subject_set)) {
                             echo "<option value=\"" . h($subject['id']) . "\"";
-                            if ($page['subject_id'] == $subject['id']) {
+                            if ($page["subject_id"] == $subject['id']) {
                                 echo " selected";
                             }
                             echo ">" . h($subject['menu_name']) . "</option>";
                         }
-                        mysqli_free_result($subject_set)
+                        mysqli_free_result($subject_set);
                         ?>
                     </select>
                 </dd>

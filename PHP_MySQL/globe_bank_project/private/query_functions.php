@@ -115,7 +115,7 @@ function find_page_by_id($id)
     global $db;
 
     $sql = "SELECT * FROM pages ";
-    $sql .= "WHERE id='" . $id . "',";
+    $sql .= "WHERE id='" . $id . "'";
     $result = mysqli_query($db, $sql);
 
     confirm_result_set($result);
@@ -146,7 +146,7 @@ function insert_page($page)
         return true;
     } else {
         // INSERT failed
-        echo mysqli_error($db);
+        echo mysqli_error($db) . "Error with insert query";
         db_disconnect($db);
         exit;
     }
@@ -171,7 +171,7 @@ function update_page($page)
     if ($result) {
         return true;
     } else {
-        echo mysqli_error($db);
+        echo mysqli_error($db) . "Error with update query";
         db_disconnect($db);
         exit;
     }
@@ -190,7 +190,7 @@ function delete_page($id)
     if ($result) {
         return true;
     } else {
-        echo mysqli_error($db);
+        echo mysqli_error($db) . "error with";
         db_disconnect($db);
         exit;
     }

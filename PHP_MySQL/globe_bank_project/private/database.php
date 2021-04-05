@@ -11,7 +11,8 @@ function db_connect()
 function db_disconnect($connection)
 {
     if (isset($connection)) {
-        mysqli_close($connection);}
+        mysqli_close($connection);
+    }
 }
 
 function confirm_db_connect()
@@ -21,7 +22,6 @@ function confirm_db_connect()
         $msg .= mysqli_connect_error();
         $msg .= " (" . mysqli_connect_errno() . ")";
         exit($msg);
-
     }
 }
 
