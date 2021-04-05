@@ -62,9 +62,15 @@ include SHARED_PATH . '/staff__header.php';
                 <dt>Visible</dt>
                 <dd>
                     <input type="hidden" name="visible" value="0" />
-                    <input type="checkbox" name="visible" value="1" <?php if ($visible == "1") {
+                    <input type="checkbox" name="visible" value="1" <?php if ($page['visible'] == "1") {
                                                                         echo "checked";
                                                                     } ?> />
+                </dd>
+            </dl>
+            <dl>
+                <dt>Content</dt>
+                <dd>
+                    <textarea name="content" id="" cols="60" rows="10"><?php echo h($page['content']) ?></textarea>
                 </dd>
             </dl>
             <div id="operations">
