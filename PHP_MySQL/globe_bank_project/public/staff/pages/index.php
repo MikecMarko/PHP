@@ -10,7 +10,7 @@ $page_set = find_all_pages();
 $page_title = 'Pages';
 ?>
 
-<?php include SHARED_PATH . '/staff__header.php';?>
+<?php include SHARED_PATH . '/staff__header.php'; ?>
 
 <div id="content">
     <div class="pages__listing">
@@ -31,9 +31,10 @@ $page_title = 'Pages';
                 <th>&nbsp;</th>
             </tr>
             <tr>
-                <?php while ($page = mysqli_fetch_assoc($page_set)) {?>
+                <?php while ($page = mysqli_fetch_assoc($page_set)) { ?>
+                <?php $subject = find_subject_by_id($page['subject_id']); ?>
                 <td> <?php echo h($page['id']) ?> </td>
-                <td> <?php echo h($page['subject_id']) ?> </td>
+                <td><?php echo h($subject['menu_name']); ?></td>
                 <td> <?php echo h($page['position']) ?> </td>
                 <td> <?php echo $page['visible'] == 1 ? 'true' : 'false' ?> </td>
                 <td> <?php echo h($page['name']) ?> </td>
@@ -41,11 +42,11 @@ $page_title = 'Pages';
                         href="<?php echo url_for("/staff/pages/show.php?id=" . h(u($page['id']))) ?>">View</a>
                 </td>
                 <td> <a href="<?php echo url_for("/staff/pages/edit.php?id=" . h(u($page['id']))) ?>">Edit</a> </td>
-                <td> <a href="">Delete</a> </td>
+                <td> <a href="<?php echo url_for("/staff/pages/delete.php?id=" . h(u($page['id']))) ?>">Delete</a> </td>
             </tr>
-            <?php }?>
+            <?php } ?>
         </table>
-        <?php mysqli_free_result($page_set)?>
+        <?php mysqli_free_result($page_set) ?>
     </div>
 </div>
-<?php include SHARED_PATH . '/staff__footer.php';?>
+<?php include SHARED_PATH . '/staff__footer.php'; ?>

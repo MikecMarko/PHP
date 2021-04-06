@@ -182,7 +182,7 @@ function delete_page($id)
     global $db;
 
     $sql = "DELETE FROM pages ";
-    $sql .= "WHERE id'" . $id . "', ";
+    $sql .= "WHERE id='" . $id . "' ";
     $sql .= "LIMIT 1";
 
     $result = mysqli_query($db, $sql);
@@ -190,7 +190,7 @@ function delete_page($id)
     if ($result) {
         return true;
     } else {
-        echo mysqli_error($db) . "error with";
+        echo mysqli_error($db);
         db_disconnect($db);
         exit;
     }

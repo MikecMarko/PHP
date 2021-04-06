@@ -38,6 +38,24 @@ include SHARED_PATH . '/staff__header.php';
         <h1>Edit a page</h1>
         <form action="<?php echo url_for('/staff/pages/edit.php?id=' . h(u($id))) ?>" method="post">
             <dl>
+                <dt>Subject</dt>
+                <dd>
+                    <select name="subject_id">
+                        <?php
+                        $subject_set = find_all_subjects();
+                        while ($subject = mysqli_fetch_assoc($subject_set)) {
+                            echo "<option value=\"" . h($subject['id']) . "\"";
+                            if ($page["subject_id"] == $subject['id']) {
+                                echo " selected";
+                            }
+                            echo ">" . h($subject['menu_name']) . "</option>";
+                        }
+                        mysqli_free_result($subject_set);
+                        ?>
+                    </select>
+                </dd>
+            </dl>
+            <dl>
                 <dt>Page Name</dt>
                 <dd><input type="text" name="name" value="<?php echo h($page['name']) ?>"></dd>
             </dl>
