@@ -18,7 +18,7 @@ if (is_post_request()) {
     $page['content'] = $_POST['content'] ?? '';
 
     $result = update_page($page);
-    redirect_to(url_for('/staff/pages/show?id=' . $id));
+    redirect_to(url_for('/staff/pages/show.php?id=' . $id));
 } else {
     $page = find_page_by_id($id);
     $page_set = find_all_pages();

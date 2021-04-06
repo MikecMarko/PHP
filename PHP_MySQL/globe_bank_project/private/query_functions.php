@@ -155,12 +155,12 @@ function insert_page($page)
 function update_page($page)
 {
     global $db;
-
-    $sql = "subject_id='" . $page['subject_id'] . "', ";
+    $sql = "UPDATE pages SET ";
+    $sql .= "subject_id='" . $page['subject_id'] . "', ";
     $sql .= "name='" . $page['name'] . "', ";
     $sql .= "position='" . $page['position'] . "', ";
     $sql .= "visible='" . $page['visible'] . "', ";
-    $sql .= "content='" . $page['content'] . "', ";
+    $sql .= "content='" . $page['content'] . "' ";
     $sql .= "WHERE id='" . $page['id'] . "' ";
     $sql .= "LIMIT 1";
 
