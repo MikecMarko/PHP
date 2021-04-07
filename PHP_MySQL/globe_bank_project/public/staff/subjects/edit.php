@@ -5,7 +5,7 @@ if (!isset($_GET['id'])) {
 }
 
 $id = $_GET['id'];
-$subject = find_subject_by_id($id);
+
 
 if (is_post_request()) {
     // handling of form values sent by new.php
@@ -19,15 +19,15 @@ if (is_post_request()) {
     if ($result === true) {
         redirect_to(url_for('/staff/subjects/show.php?id=' . $id));
     } else {
-        $error = $result;
+        $errors = $result;
         //var_dump($error);
     }
 } else {
     $subject = find_subject_by_id($id);
-    $subject_set = find_all_subjects();
-    $subject_count = mysqli_num_rows($subject_set);
-    mysqli_free_result($subject_set);
 }
+$subject_set = find_all_subjects();
+$subject_count = mysqli_num_rows($subject_set);
+mysqli_free_result($subject_set);
 ?>
 
 <?php $page_title = 'Edit Subject'; ?>

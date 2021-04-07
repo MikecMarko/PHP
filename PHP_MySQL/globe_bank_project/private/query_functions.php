@@ -30,27 +30,25 @@ function validate_subject($subject)
 {
     $errors = [];
 
-    //menu name
-
+    // menu_name
     if (is_blank($subject['menu_name'])) {
         $errors[] = "Name cannot be blank.";
-    } elseif (!has_lenght($subject['menu_name'], ['min' => 2, 'max' => 255])) {
-        $error[] = "Name must be between 2 and 255 characters.";
+    } elseif (!has_length($subject['menu_name'], ['min' => 2, 'max' => 255])) {
+        $errors[] = "Name must be between 2 and 255 characters.";
     }
 
-    //position, make sure we are working with integer
-
-    $position_int = (int) $subject['position'];
-
-    if ($position_int <= 0) {
-        $errors[] = "Position must be greater than 0";
+    // position
+    // Make sure we are working with an integer
+    $postion_int = (int) $subject['position'];
+    if ($postion_int <= 0) {
+        $errors[] = "Position must be greater than zero.";
     }
-    if ($position_int > 999) {
-        $errors[] = "Position must be less than 999";
+    if ($postion_int > 999) {
+        $errors[] = "Position must be less than 999.";
     }
 
-    //visible, make sure we are working with string
-
+    // visible
+    // Make sure we are working with a string
     $visible_str = (string) $subject['visible'];
     if (!has_inclusion_of($visible_str, ["0", "1"])) {
         $errors[] = "Visible must be true or false.";

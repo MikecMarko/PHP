@@ -8,7 +8,7 @@ it uses === to avoid false positives.
 It is better than empty() because empty() considers "0" to be empty
 */
 
-function is_blank()
+function is_blank($value)
 {
     return !isset($value) || trim($value) === '';
 }
@@ -32,7 +32,7 @@ function has_presence($value)
   spaces count towards lenght. we use trim() if spaces should not count
 */
 
-function has_lenght_greater_than($value, $min)
+function has_length_greater_than($value, $min)
 {
     $lenght = strlen($value);
     return $lenght > $min;
@@ -43,7 +43,7 @@ function has_lenght_greater_than($value, $min)
   spaces count towards lenght. we use trim() if spaces should not count
 */
 
-function has_lenght_less_than($value, $min)
+function has_length_less_than($value, $min)
 {
     $lenght = strlen($value);
     return $lenght < $min;
@@ -55,7 +55,7 @@ Validation of string lenght, spaces count torward lenght
 We use trim() if spaces should not count
 */
 
-function has_lenght_exactly($value, $exact)
+function has_length_exactly($value, $exact)
 {
     $lenght = strlen($value);
     return $lenght == $exact;
@@ -69,13 +69,13 @@ function has_lenght_exactly($value, $exact)
  use trim() if spaces should not count
  */
 
-function has_lenght($value, $options)
+function has_length($value, $options)
 {
-    if (isset($options['min']) && !has_lenght_greater_than($value, $options['min'] - 1)) {
+    if (isset($options['min']) && !has_length_greater_than($value, $options['min'] - 1)) {
         return false;
-    } elseif (isset($options['max']) && !has_lenght_less_than($value, $options['max'] + 1)) {
+    } elseif (isset($options['max']) && !has_length_less_than($value, $options['max'] + 1)) {
         return false;
-    } elseif (isset($options['exact']) && !has_lenght_exactly($value, $options['exact'])) {
+    } elseif (isset($options['exact']) && !has_length_exactly($value, $options['exact'])) {
         return false;
     } else {
         return true;
