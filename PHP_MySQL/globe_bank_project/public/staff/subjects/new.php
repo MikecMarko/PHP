@@ -11,8 +11,13 @@ if (is_post_request()) {
     $subject['visible'] = $_POST['visible'] ?? '';
 
     $result = insert_subject($subject);
-    $new_id = mysqli_insert_id($db);
-    redirect_to(url_for('/staff/subjects/show.php?id=' . $new_id));
+
+    if ($result === true) {
+        $new_id = mysqli_insert_id($db);
+        redirect_to(url_for('/staff/subjects/show.php?id=' . $new_id));
+    } else {
+        $errors = $result;
+    }
 } else {
     $subject = [];
     $subject['menu_name'] = '';
@@ -38,6 +43,7 @@ $subject['position'] = $subject_count;
             Subjects</a></div>
     <div class="subject__new">
         <h1>Create a subject</h1>
+        <?php echo display_errors($errors); ?>
         <form action="<?php echo url_for('/staff/subjects/new.php') ?>" method="post">
             <dl>
                 <dt>Menu Name</dt>

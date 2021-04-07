@@ -61,6 +61,10 @@ function insert_subject($subject)
 {
     global $db;
 
+    $errors = validate_subject($subject);
+    if (!empty($errors)) {
+        return $errors;
+    }
 
     $sql = "INSERT INTO subjects ";
     $sql .= "(menu_name, position, visible)";
