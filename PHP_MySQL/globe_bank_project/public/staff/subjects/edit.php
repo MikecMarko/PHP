@@ -20,7 +20,7 @@ if (is_post_request()) {
         redirect_to(url_for('/staff/subjects/show.php?id=' . $id));
     } else {
         $error = $result;
-        var_dump($error);
+        //var_dump($error);
     }
 } else {
     $subject = find_subject_by_id($id);
@@ -39,6 +39,10 @@ if (is_post_request()) {
     <a class="page__back" href="<?php echo url_for('staff/subjects/index.php') ?>">&laquo; Back to Subjects</a>
     <div class="subject__edit">
         <h1>Edit a subject</h1>
+
+        <?php
+        echo display_errors($errors);
+        ?>
         <form action="<?php echo url_for('staff/subjects/edit.php?id=' . h(u($id))) ?>" method="post">
             <dl>
                 <dt>Menu Name</dt>

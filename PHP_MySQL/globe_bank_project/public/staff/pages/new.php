@@ -13,9 +13,7 @@ if (is_post_request()) {
     $page['content'] = $_POST['content'] ?? '';
 
     $result = insert_page($page);
-
     $new_id = mysqli_insert_id($db);
-
     redirect_to(url_for('/staff/pages/show.php?id=' . $new_id));
 } else {
     $page = [];
