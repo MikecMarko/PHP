@@ -83,6 +83,17 @@ function has_lenght($value, $options)
 }
 
 /*
+has_inclusion_of( 5, [1,3,5,7,9] )
+  => validate exclusion from a set
+*/
+
+function has_inclusion_of($value, $set)
+{
+    return in_array($value, $set);
+}
+
+
+/*
 has_exclusion_of( 5, [1,3,5,7,9] )
   => validate exclusion from a set
 */
