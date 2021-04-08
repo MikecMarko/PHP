@@ -186,6 +186,10 @@ function validate_page($page)
     } elseif (!has_length($page['name'], ['min' => 2, 'max' => 255])) {
         $errors[] = "Name must be between 2 and 255 characters.";
     }
+    $current_id = $page['id'] ?? '0';
+    if (!has_unique_page_name($page['name'], $current_id)) {
+        $errors[] = "Menu name already exists, please pick a new one.";
+    }
 
     // positions
 

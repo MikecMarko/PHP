@@ -133,6 +133,25 @@ function has_valid_email_format($value)
 
 /*
 has_unique_page_name('Example'){
+ Used to validate the uniquness of page name. 
+ It will provide only the page name for new records and 
+ current ID and page name for existing records.
 
-
+ current_id is set to default 0
 */
+
+
+function has_unique_page_name($name, $current_id = "0")
+{
+    global $db;
+
+    $sql = "SELECT * FROM pages ";
+    $sql .= "WHERE name='" . $name . "' ";
+    $sql .= "AND id != '" . $current_id . "'";
+
+    $page_set = mysqli_query($db, $sql);
+    $page_count = mysqli_num_rows($page_set);
+    mysqli_free_result($page_set);
+
+    return $page_count === 0;
+}
