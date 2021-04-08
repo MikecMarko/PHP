@@ -146,8 +146,8 @@ function has_unique_page_name($name, $current_id = "0")
     global $db;
 
     $sql = "SELECT * FROM pages ";
-    $sql .= "WHERE name='" . $name . "' ";
-    $sql .= "AND id != '" . $current_id . "'";
+    $sql .= "WHERE name='" . db_escape($db, $name) . "' ";
+    $sql .= "AND id != '" . db_escape($db, $current_id) . "'";
 
     $page_set = mysqli_query($db, $sql);
     $page_count = mysqli_num_rows($page_set);
