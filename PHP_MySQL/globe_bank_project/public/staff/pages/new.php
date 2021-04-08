@@ -44,6 +44,7 @@ mysqli_free_result($page_set);
     </div>
     <div class="content__page__new">
         <h1>Create a new page</h1>
+        <?php echo display_errors($errors);  ?>
         <form action="<?php echo url_for('/staff/pages/new.php') ?>" method="post">
             <dl>
                 <dt>Subject</dt>
