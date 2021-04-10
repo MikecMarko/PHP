@@ -21,7 +21,7 @@ Positive 😀
 - Improved project planning with application blueprint and project structure.
 - Creating reusable sections of code:
   - database connnection and credentials
-  - function
+  - functions
   - query and validation functions
 - Encoding of URL parameters, HTML
 - Output buffering
