@@ -1,14 +1,10 @@
-<!doctype html>
+<?php require_once('../private/initialize.php'); ?>
+<?php include(SHARED_PATH . '/public__header.php'); ?>
 
-<html lang="en">
+<div id="main">
+    <div id="page">
 
-<head>
-    <title>Globe Bank project</title>
-    <meta charset="utf-8">
-</head>
+    </div>
+</div>
 
-<body>
-    <h1> Globe Bank Comming Soon! </h1>
-</body>
-
-</html>
+<?php include(SHARED_PATH . '/public__footer.php'); ?>
