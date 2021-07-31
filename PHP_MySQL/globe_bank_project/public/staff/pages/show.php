@@ -22,7 +22,7 @@ $page = find_page_by_id($id);
     </div>
 
     <div class="page__show">
-        <h1>Page : <?php echo h($page['name']) ?></h1>
+        <h1>Page : <?php echo h($page['menu_name']) ?></h1>
         <div class="page__atributes">
             <?php $subject = find_subject_by_id($page['subject_id']); ?>
             <dl>
@@ -31,7 +31,7 @@ $page = find_page_by_id($id);
             </dl>
             <dl>
                 <dt>Menu Name </dt>
-                <dd><?php echo h($page['name']); ?></dd>
+                <dd><?php echo h($page['menu_name']); ?></dd>
             </dl>
             <dl>
                 <dt>Position</dt>
