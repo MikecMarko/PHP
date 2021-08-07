@@ -12,7 +12,7 @@ if (is_post_request()) {
     $page = [];
     $page['id'] = $id;
     $page['subject_id'] = $_POST['subject_id'] ?? '';
-    $page['name'] = $_POST['name'] ?? '';
+    $page['menu_name'] = $_POST['menu_name'] ?? '';
     $page['position'] = $_POST['position'] ?? '';
     $page['visible'] = $_POST['visible'] ?? '';
     $page['content'] = $_POST['content'] ?? '';
@@ -63,7 +63,7 @@ include SHARED_PATH . '/staff__header.php';
             </dl>
             <dl>
                 <dt>Page Name</dt>
-                <dd><input type="text" name="name" value="<?php echo h($page['name']) ?>"></dd>
+                <dd><input type="text" name="name" value="<?php echo h($page['menu_name']) ?>"></dd>
             </dl>
             <dl>
                 <dt>Position</dt>

@@ -7,7 +7,7 @@ if (is_post_request()) {
 
     $page = [];
     $page['subject_id'] = $_POST['subject_id'] ?? '';
-    $page['name'] = $_POST['name'] ?? '';
+    $page['menu_name'] = $_POST['menu_name'] ?? '';
     $page['position'] = $_POST['position'] ?? '';
     $page['visible'] = $_POST['visible'] ?? '';
     $page['content'] = $_POST['content'] ?? '';
@@ -23,7 +23,7 @@ if (is_post_request()) {
 } else {
     $page = [];
     $page['subject_id'] = '';
-    $page['name'] = '';
+    $page['menu_name'] = '';
     $page['position'] = '';
     $page['visible'] = '';
     $page['content'] = '';
@@ -66,7 +66,7 @@ mysqli_free_result($page_set);
             </dl>
             <dl>
                 <dt>Page Name</dt>
-                <dd><input type="text" name="name" value="<?php echo h($page['name']); ?>"></dd>
+                <dd><input type="text" name="name" value="<?php echo h($page['menu_name']); ?>"></dd>
             </dl>
             <dl>
                 <dt>Position</dt>

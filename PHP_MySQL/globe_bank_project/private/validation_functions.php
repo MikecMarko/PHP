@@ -146,7 +146,7 @@ function has_unique_page_name($name, $current_id = "0")
     global $db;
 
     $sql = "SELECT * FROM pages ";
-    $sql .= "WHERE name='" . db_escape($db, $name) . "' ";
+    $sql .= "WHERE menu_name='" . db_escape($db, $name) . "' ";
     $sql .= "AND id != '" . db_escape($db, $current_id) . "'";
 
     $page_set = mysqli_query($db, $sql);

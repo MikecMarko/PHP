@@ -21,11 +21,17 @@ function find_all_subjects($options =[] )
     return $result;
 }
 
-function find_subject_by_id($id)
+function find_subject_by_id($id, $options = [])
 {
     global $db;
+
+    $visible = $options['visible'] ?? false;
+
     $sql = "SELECT * FROM subjects ";
     $sql .= "WHERE id='" . db_escape($db, $id) . "'";
+    if($visible) {
+        $sql .= "AND visible = true ";
+    }
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     $subject = mysqli_fetch_assoc($result);
@@ -160,12 +166,17 @@ function find_all_pages()
     return $result;
 }
 
-function find_page_by_id($id)
+function find_page_by_id($id, $option = [])
 {
     global $db;
 
+    $visible = $options['visible'] ?? false;
+
     $sql = "SELECT * FROM pages ";
     $sql .= "WHERE id='" . db_escape($db, $id) . "'";
+    if($visible) {
+        $sql .= "AND visible = true ";
+    }
     $result = mysqli_query($db, $sql);
 
     confirm_result_set($result);
@@ -188,13 +199,13 @@ function validate_page($page)
 
     // name
 
-    if (is_blank($page['name'])) {
+    if (is_blank($page['menu_name'])) {
         $errors[] = "Name cannot be blank.";
-    } elseif (!has_length($page['name'], ['min' => 2, 'max' => 255])) {
+    } elseif (!has_length($page['menu_name'], ['min' => 2, 'max' => 255])) {
         $errors[] = "Name must be between 2 and 255 characters.";
     }
     $current_id = $page['id'] ?? '0';
-    if (!has_unique_page_name($page['name'], $current_id)) {
+    if (!has_unique_page_name($page['menu_name'], $current_id)) {
         $errors[] = "Menu name already exists, please pick a new one.";
     }
 
@@ -236,10 +247,10 @@ function insert_page($page)
 
 
     $sql = "INSERT INTO pages ";
-    $sql .= "(subject_id, name, position, visible, content) ";
+    $sql .= "(subject_id, menu_name, position, visible, content) ";
     $sql .= "VALUES (";
     $sql .= "'" . db_escape($db, $page['subject_id']) . "',";
-    $sql .= "'" . db_escape($db, $page['name']) . "',";
+    $sql .= "'" . db_escape($db, $page['menu_name']) . "',";
     $sql .= "'" . db_escape($db, $page['position']) . "',";
     $sql .= "'" . db_escape($db, $page['visible']) . "',";
     $sql .= "'" . db_escape($db, $page['content']) . "'";
@@ -269,7 +280,7 @@ function update_page($page)
 
     $sql = "UPDATE pages SET ";
     $sql .= "subject_id='" . db_escape($db, $page['subject_id']) . "', ";
-    $sql .= "name='" . db_escape($db, $page['name']) . "', ";
+    $sql .= "menu_name'" . db_escape($db, $page['menu_name']) . "', ";
     $sql .= "position='" . db_escape($db, $page['position']) . "', ";
     $sql .= "visible='" . db_escape($db, $page['visible']) . "', ";
     $sql .= "content='" . db_escape($db, $page['content']) . "' ";
