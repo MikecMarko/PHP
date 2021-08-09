@@ -1,40 +1,37 @@
-<?php
-require_once "../../../private/initialize.php";
-?>
+<?php require_once('../../../private/initialize.php'); ?>
 
 <?php
-
-$id = $_GET['id'] ?? '1';
+// $id = isset($_GET['id']) ? $_GET['id'] : '1';
+$id = $_GET['id'] ?? '1'; // PHP > 7.0
 
 $page = find_page_by_id($id);
 
 ?>
 
-<?php $page_title = "Show page" ?>
-
-<?php include SHARED_PATH . '/staff__header.php'; ?>
+<?php $page_title = 'Show Page'; ?>
+<?php include(SHARED_PATH . '/staff__header.php'); ?>
 
 <div id="content">
-    <div class="page__back">
-        <a href="<?php echo url_for('/staff/pages/index.php') ?>"> &laquo; Back to pages</a>
-        <br />
-        <br />
-    </div>
 
-    <div class="page__show">
-        <h1>Page : <?php echo h($page['menu_name']) ?></h1>
+    <a class="back-link" href="<?php echo url_for('/staff/pages/index.php'); ?>">&laquo; Back to List</a>
+
+    <div class="page show">
+
+        <h1>Page: <?php echo h($page['menu_name']); ?></h1>
+
         <div class="actions">
-            <a href="<?php echo url_for('/index.php?id=' . h(u($page['id'])) . '&preview=true'); ?>" class="action"
-                target="_blank"></a>
+            <a class="action" href="<?php echo url_for('/index.php?id=' . h(u($page['id'])) . '&preview=true'); ?>"
+                target="_blank">Preview</a>
         </div>
-        <div class="page__atributes">
+
+        <div class="attributes">
             <?php $subject = find_subject_by_id($page['subject_id']); ?>
             <dl>
                 <dt>Subject</dt>
                 <dd><?php echo h($subject['menu_name']); ?></dd>
             </dl>
             <dl>
-                <dt>Menu Name </dt>
+                <dt>Menu Name</dt>
                 <dd><?php echo h($page['menu_name']); ?></dd>
             </dl>
             <dl>
@@ -43,18 +40,17 @@ $page = find_page_by_id($id);
             </dl>
             <dl>
                 <dt>Visible</dt>
-                <dd><?php echo h($page['visible'] == '1' ? 'true' : 'false'); ?></dd>
+                <dd><?php echo $page['visible'] == '1' ? 'true' : 'false'; ?></dd>
             </dl>
             <dl>
                 <dt>Content</dt>
                 <dd><?php echo h($page['content']); ?></dd>
             </dl>
-
         </div>
+
+
     </div>
 
-    <br />
 </div>
 
-
-<?php include SHARED_PATH . '/staff__footer.php'; ?>
+<?php include(SHARED_PATH . '/staff__footer.php'); ?>

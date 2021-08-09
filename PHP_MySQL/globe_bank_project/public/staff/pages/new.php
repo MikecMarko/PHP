@@ -1,86 +1,89 @@
-<?php require_once "../../../private/initialize.php"; ?>
-
-
 <?php
-if (is_post_request()) {
-    // handling of form values sent by new.php
 
-    $page = [];
-    $page['subject_id'] = $_POST['subject_id'] ?? '';
-    $page['menu_name'] = $_POST['menu_name'] ?? '';
-    $page['position'] = $_POST['position'] ?? '';
-    $page['visible'] = $_POST['visible'] ?? '';
-    $page['content'] = $_POST['content'] ?? '';
+require_once('../../../private/initialize.php');
 
-    $result = insert_page($page);
+if(is_post_request()) {
 
-    if ($result === true) {
-        $new_id = mysqli_insert_id($db);
-        redirect_to(url_for('/staff/pages/show.php?id=' . $new_id));
-    } else {
-        $errors = $result;
-    }
+  $page = [];
+  $page['subject_id'] = $_POST['subject_id'] ?? '';
+  $page['menu_name'] = $_POST['menu_name'] ?? '';
+  $page['position'] = $_POST['position'] ?? '';
+  $page['visible'] = $_POST['visible'] ?? '';
+  $page['content'] = $_POST['content'] ?? '';
+
+  $result = insert_page($page);
+  if($result === true) {
+    $new_id = mysqli_insert_id($db);
+    redirect_to(url_for('/staff/pages/show.php?id=' . $new_id));
+  } else {
+    $errors = $result;
+  }
+
 } else {
-    $page = [];
-    $page['subject_id'] = '';
-    $page['menu_name'] = '';
-    $page['position'] = '';
-    $page['visible'] = '';
-    $page['content'] = '';
+
+  $page = [];
+  $page['subject_id'] = '';
+  $page['menu_name'] = '';
+  $page['position'] = '';
+  $page['visible'] = '';
+  $page['content'] = '';
+
 }
+
 $page_set = find_all_pages();
 $page_count = mysqli_num_rows($page_set) + 1;
 mysqli_free_result($page_set);
 
 ?>
 
-<?php $page_title = "Create a page"; ?>
-<?php include SHARED_PATH . '/staff__header.php'; ?>
+<?php $page_title = 'Create Page'; ?>
+<?php include(SHARED_PATH . '/staff__header.php'); ?>
 
 <div id="content">
 
-    <div class="content__back">
-        <a class="content__page__back" href="<?php echo url_for('/staff/pages/index.php') ?>">&laquo; Back to pages</a>
-    </div>
-    <div class="content__page__new">
-        <h1>Create a new page</h1>
-        <?php echo display_errors($errors);  ?>
-        <form action="<?php echo url_for('/staff/pages/new.php') ?>" method="post">
+    <a class="back-link" href="<?php echo url_for('/staff/pages/index.php'); ?>">&laquo; Back to List</a>
+
+    <div class="page new">
+        <h1>Create Page</h1>
+
+        <?php echo display_errors($errors); ?>
+
+        <form action="<?php echo url_for('/staff/pages/new.php'); ?>" method="post">
             <dl>
                 <dt>Subject</dt>
                 <dd>
                     <select name="subject_id">
                         <?php
-                        $subject_set = find_all_subjects();
-                        while ($subject = mysqli_fetch_assoc($subject_set)) {
-                            echo "<option value=\"" . h($subject['id']) . "\"";
-                            if ($page["subject_id"] == $subject['id']) {
-                                echo " selected";
-                            }
-                            echo ">" . h($subject['menu_name']) . "</option>";
-                        }
-                        mysqli_free_result($subject_set);
-                        ?>
+            $subject_set = find_all_subjects();
+            while($subject = mysqli_fetch_assoc($subject_set)) {
+              echo "<option value=\"" . h($subject['id']) . "\"";
+              if($page["subject_id"] == $subject['id']) {
+                echo " selected";
+              }
+              echo ">" . h($subject['menu_name']) . "</option>";
+            }
+            mysqli_free_result($subject_set);
+          ?>
                     </select>
                 </dd>
             </dl>
             <dl>
-                <dt>Page Name</dt>
-                <dd><input type="text" name="name" value="<?php echo h($page['menu_name']); ?>"></dd>
+                <dt>Menu Name</dt>
+                <dd><input type="text" name="menu_name" value="<?php echo h($page['menu_name']); ?>" /></dd>
             </dl>
             <dl>
                 <dt>Position</dt>
                 <dd>
                     <select name="position">
                         <?php
-                        for ($i = 1; $i <= $page_count; $i++) {
-                            echo "<option value=\"{$i}\"";
-                            if ($page["position"] == $i) {
-                                echo " selected";
-                            }
-                            echo ">{$i}</option>";
-                        };
-                        ?>
+              for($i=1; $i <= $page_count; $i++) {
+                echo "<option value=\"{$i}\"";
+                if($page["position"] == $i) {
+                  echo " selected";
+                }
+                echo ">{$i}</option>";
+              }
+            ?>
                     </select>
                 </dd>
             </dl>
@@ -88,9 +91,8 @@ mysqli_free_result($page_set);
                 <dt>Visible</dt>
                 <dd>
                     <input type="hidden" name="visible" value="0" />
-                    <input type="checkbox" name="visible" value="1" <?php if ($page['subject_id'] == "1") {
-                                                                        echo " checked";
-                                                                    } ?> />
+                    <input type="checkbox" name="visible" value="1"
+                        <?php if($page['visible'] == "1") { echo " checked"; } ?> />
                 </dd>
             </dl>
             <dl>
@@ -100,13 +102,12 @@ mysqli_free_result($page_set);
                 </dd>
             </dl>
             <div id="operations">
-                <input type="submit" value="Create Page">
+                <input type="submit" value="Create Page" />
             </div>
-
-
         </form>
 
-
     </div>
+
 </div>
-<?php include SHARED_PATH . '/staff__footer.php' ?>
+
+<?php include(SHARED_PATH . '/staff__footer.php'); ?>
