@@ -1,5 +1,8 @@
 <?php
 ob_start(); // output buffering is turned on
+
+session_start(); // starts the session
+
 //Assigning file paths to PHP constants
 //_FILE_ returns the current path to this file
 // dirname() returns the pathh to the parent directory
