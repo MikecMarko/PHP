@@ -1,8 +1,7 @@
 <?php
-if (!isset($page_title)) {
-    $page_title = "Staff area which was not set";
-}
+  if(!isset($page_title)) { $page_title = 'Staff Area'; }
 ?>
+
 <!doctype html>
 
 <html lang="en">
@@ -20,9 +19,9 @@ if (!isset($page_title)) {
 
     <navigation>
         <ul>
-            <li>User: <?php echo $_SESSION['username'] ?? ''; ?> </li>
-            <li><a href=<?php echo url_for(('/staff/index.php')) ?>>Menu</a></li>
-            <li><a href=<?php echo url_for(('/staff/logout.php')) ?>>Logout</a></li>
+            <li>User: <?php echo $_SESSION['username'] ?? ''; ?></li>
+            <li><a href="<?php echo url_for('/staff/index.php'); ?>">Menu</a></li>
+            <li><a href="<?php echo url_for('/staff/logout.php'); ?>">Logout</a></li>
         </ul>
     </navigation>
 
