@@ -25,3 +25,5 @@ if (!isset($page_title)) {
             <li><a href=<?php echo url_for(('/staff/logout.php')) ?>>Logout</a></li>
         </ul>
     </navigation>
+
+    <?php echo display_session_message(); ?>
