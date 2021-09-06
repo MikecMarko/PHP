@@ -10,28 +10,28 @@ if(is_post_request()) {
 
 } else {
   // Read the stored value (if any)
-  $language = $_COOKIE['language'] ?? 'Any';
+  $language = $_COOKIE['language'] ?? 'None';
 }
 
 ?>
 
-<?php include(SHARED_PATH . '/public__header.php'); ?>
+<?php include(SHARED_PATH . '/public_header.php'); ?>
 
 <div id="main">
 
-    <?php include(SHARED_PATH . '/public__navigation.php'); ?>
+  <?php include(SHARED_PATH . '/public_navigation.php'); ?>
 
-    <div id="page">
+  <div id="page">
 
-        <div id="content">
-            <h1>Set Language Preference</h1>
+    <div id="content">
+      <h1>Set Language Preference</h1>
 
-            <p>The currently selected language is: <?php echo $language; ?></p>
+      <p>The currently selected language is: <?php echo $language; ?></p>
 
-            <form action="<?php echo url_for('/language.php'); ?>" method="post">
+      <form action="<?php echo url_for('/language.php'); ?>" method="post">
 
-                <select name="language">
-                    <?php
+        <select name="language">
+          <?php
             $language_choices = ['Any', 'English', 'Spanish', 'French', 'German'];
             foreach($language_choices as $language_choice) {
               echo "<option value=\"{$language_choice}\"";
@@ -41,14 +41,14 @@ if(is_post_request()) {
               echo ">{$language_choice}</option>";
             }
           ?>
-                </select><br />
-                <br />
-                <input type="submit" value="Set Preference" />
-            </form>
-        </div>
-
+        </select><br />
+        <br />
+        <input type="submit" value="Set Preference" />
+      </form>
     </div>
+
+  </div>
 
 </div>
 
-<?php include(SHARED_PATH . '/public__footer.php'); ?>
+<?php include(SHARED_PATH . '/public_footer.php'); ?>

@@ -28,7 +28,7 @@ header {
   padding: 0;
   text-align: left;
   background: #e03e52;
-  color: #ffffff;
+  color: #FFFFFF;
 }
 
 header h1 {
@@ -52,8 +52,9 @@ footer {
   padding: 1em;
   text-align: center;
   background: #e03e52;
-  color: #ffffff;
+  color: #FFFFFF;
 }
+
 
 /* Navigation */
 
@@ -65,7 +66,7 @@ navigation {
 }
 
 navigation a {
-  color: #ffffff;
+  color: #FFFFFF;
   text-decoration: none;
 }
 
@@ -75,12 +76,12 @@ navigation a:hover {
 }
 
 a {
-  color: #e03e52;
-  text-decoration: none;
+  color: #E03E52;
+  text-decoration: none
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: underline
 }
 
 ul.subjects {
@@ -110,6 +111,7 @@ navigation li {
   font-size: 16px;
   line-height: 1.5em;
 }
+
 
 /* Page Content */
 
@@ -143,9 +145,7 @@ navigation li {
 }
 
 #page p {
-  font-family: 'Gill Sans', 'Gill Sans MT', 'Myriad Pro',
-    'DejaVu Sans Condensed', Helvetica, Arial, 'sans-serif';
-  font-size: 12px;
+  font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif" font-size: 12px;
   color: #000000;
   padding: 0px;
   line-height: normal;
@@ -195,12 +195,12 @@ navigation li {
 /* Learn More links */
 
 a.learnmore {
-  color: #e03e52;
+  color: #E03E52;
   font-size: 14px;
   font-weight: bold;
-  text-decoration: none;
+  text-decoration: none
 }
 
 a.learnmore:hover {
-  text-decoration: underline;
+  text-decoration: underline
 }
