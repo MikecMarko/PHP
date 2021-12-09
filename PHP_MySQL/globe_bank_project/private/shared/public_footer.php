@@ -4,7 +4,6 @@
 
   <p style="text-align: center">PHP&MYSQL project practice created by Marko Mikec with the guidance from LinkedIn
       Learning</p>
-
   </body>
 
   </html>

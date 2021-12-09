@@ -32,6 +32,12 @@
 
       </li>
     <?php } // while $nav_subjects ?>
+      <li>
+          <a href="<?php echo url_for('/staff/index.php'); ?>">
+              Staff Area
+          </a>
+      </li>
+  </li>
   </ul>
   <?php mysqli_free_result($nav_subjects); ?>
 </navigation>
