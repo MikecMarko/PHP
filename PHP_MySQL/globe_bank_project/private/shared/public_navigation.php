@@ -34,7 +34,7 @@
     <?php } // while $nav_subjects ?>
       <li>
           <a href="<?php echo url_for('/staff/index.php'); ?>">
-              Staff Area
+              Staff Areaa
           </a>
       </li>
   </li>
