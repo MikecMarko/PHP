@@ -3,6 +3,10 @@ PHP_MySQL_HTML5_CSS3
 
 ---
 
+**Login data for test:**  
+ - username :  testUser
+ - password :  Password#123
+
 💻 Technologys that were used in this project:
 
 - PHP
