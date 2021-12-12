@@ -30,12 +30,9 @@ Positive 😀
 - Improved and worked with data validation and data validation logic problems
   - suprisingly true and empty
 - SQL injection prevention and delimiting data values
+- More protected and managed login system
+- Separate admin menu for full page management
+- Complete navigation
 
 Negative 😔
-
-- Not compleated project.
-- Still need to finish:
-  - Login and Logout page
-  - Admin menu (Content Management, Admin Management)
-  - Site pages with complete navigation
-  - Fix CSS and responsivnes.
+  - Fix CSS and responsivnes. Still some work to be done on that part.
