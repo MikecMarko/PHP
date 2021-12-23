@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/8.5/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         executionOrder="depends,defects"
+         forceCoversAnnotation="true"
+         beStrictAboutCoversAnnotation="true"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutTodoAnnotatedTests="true"
+         convertDeprecationsToExceptions="true"
+         verbose="true"
+         colors="true"
+         testdox="true"
+>
+    <testsuites>
+        <testsuite name="default">
+            <directory>tests</directory>
+        </testsuite>
+
+        <testsuite name="BMI-tests">
+            <directory>tests/BMICalculatorTest.php</directory>
+        </testsuite>
+
+        <testsuite name="Fixtures">
+            <directory>tests/Fixtures/</directory>
+        </testsuite>
+
+        <testsuite name="User">
+            <directory>tests/UserTest.php/</directory>
+        </testsuite>
+
+        <testsuite name="Product">
+            <directory>tests/ProductTest.php/</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src</directory>
+        </whitelist>
+    </filter>
+    <php>
+        <const name="BASEURL" value="http://localhost:8000"/>
+        <const name="HOST" value="127.0.0.1"/>
+    </php>
+</phpunit>
