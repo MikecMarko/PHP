@@ -25,6 +25,18 @@ class ProductTest extends TestCase
 
         $product = new Product($session);
 
+        $product->setLoggerCallable(function () {
+            echo 'realLogger was not called';
+        });
+
         $this->assertSame('product 1', $product->fetchProductById(1));
+    }
+
+
+    public function testAnother() {
+        $this->markTestIncomplete(
+            'Test not complete yeat'
+        );
+
     }
 }

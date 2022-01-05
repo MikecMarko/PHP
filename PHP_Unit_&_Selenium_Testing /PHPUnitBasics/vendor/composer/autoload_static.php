@@ -67,8 +67,10 @@ class ComposerStaticInitc6bee1f346a477a7faa94f001508aef2
     public static $classMap = array (
         'BMICalculator' => __DIR__ . '/../..' . '/src/BMICalculator.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'CustomAssertionTrait' => __DIR__ . '/../..' . '/tests/Traits/CustomAssertionTrait.php',
         'Database' => __DIR__ . '/../..' . '/src/User.php',
         'DatabaseTrait' => __DIR__ . '/../..' . '/tests/Traits/DatabaseTrait.php',
+        'Logger' => __DIR__ . '/../..' . '/src/Logger.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/AssertionFailedError.php',
@@ -533,6 +535,7 @@ class ComposerStaticInitc6bee1f346a477a7faa94f001508aef2
         'PharIo\\Version\\VersionConstraintValue' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintValue.php',
         'PharIo\\Version\\VersionNumber' => __DIR__ . '/..' . '/phar-io/version/src/VersionNumber.php',
         'Product' => __DIR__ . '/../..' . '/src/Product.php',
+        'ProductAbstract' => __DIR__ . '/../..' . '/src/ProductAbstract.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',
@@ -660,6 +663,7 @@ class ComposerStaticInitc6bee1f346a477a7faa94f001508aef2
         'TheSeer\\Tokenizer\\XMLSerializer' => __DIR__ . '/..' . '/theseer/tokenizer/src/XMLSerializer.php',
         'User' => __DIR__ . '/../..' . '/src/User.php',
         'WrongBmiDataException' => __DIR__ . '/../..' . '/src/Exceptions/WrongBmiDataException.php',
+        'forStubMockTesting\\User' => __DIR__ . '/../..' . '/src/ForStubMockTesting/User.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

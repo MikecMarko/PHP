@@ -8,8 +8,10 @@ $baseDir = dirname($vendorDir);
 return array(
     'BMICalculator' => $baseDir . '/src/BMICalculator.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'CustomAssertionTrait' => $baseDir . '/tests/Traits/CustomAssertionTrait.php',
     'Database' => $baseDir . '/src/User.php',
     'DatabaseTrait' => $baseDir . '/tests/Traits/DatabaseTrait.php',
+    'Logger' => $baseDir . '/src/Logger.php',
     'PHPUnit\\Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
     'PHPUnit\\Framework\\Assert' => $vendorDir . '/phpunit/phpunit/src/Framework/Assert.php',
     'PHPUnit\\Framework\\AssertionFailedError' => $vendorDir . '/phpunit/phpunit/src/Framework/Exception/AssertionFailedError.php',
@@ -474,6 +476,7 @@ return array(
     'PharIo\\Version\\VersionConstraintValue' => $vendorDir . '/phar-io/version/src/VersionConstraintValue.php',
     'PharIo\\Version\\VersionNumber' => $vendorDir . '/phar-io/version/src/VersionNumber.php',
     'Product' => $baseDir . '/src/Product.php',
+    'ProductAbstract' => $baseDir . '/src/ProductAbstract.php',
     'SebastianBergmann\\CodeCoverage\\CodeCoverage' => $vendorDir . '/phpunit/php-code-coverage/src/CodeCoverage.php',
     'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => $vendorDir . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
     'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => $vendorDir . '/phpunit/php-code-coverage/src/Driver/Driver.php',
@@ -601,4 +604,5 @@ return array(
     'TheSeer\\Tokenizer\\XMLSerializer' => $vendorDir . '/theseer/tokenizer/src/XMLSerializer.php',
     'User' => $baseDir . '/src/User.php',
     'WrongBmiDataException' => $baseDir . '/src/Exceptions/WrongBmiDataException.php',
+    'forStubMockTesting\\User' => $baseDir . '/src/ForStubMockTesting/User.php',
 );
