@@ -666,7 +666,9 @@ class ComposerStaticInitc6bee1f346a477a7faa94f001508aef2
         'forStubMockTesting\\Logger' => __DIR__ . '/../..' . '/src/ForStubMockTesting/Logger.php',
         'forStubMockTesting\\Product' => __DIR__ . '/../..' . '/src/ForStubMockTesting/Product.php',
         'forStubMockTesting\\User' => __DIR__ . '/../..' . '/src/ForStubMockTesting/User.php',
+        'forTestingAbstractClassesAndTraits\\Employee' => __DIR__ . '/../..' . '/src/ForTestingAbstractClassesAndTraits/Employee.php',
         'forTestingAbstractClassesAndTraits\\MyTrait' => __DIR__ . '/../..' . '/src/ForTestingAbstractClassesAndTraits/MyTrait.php',
+        'forTestingAbstractClassesAndTraits\\PersonAbstractClass' => __DIR__ . '/../..' . '/src/ForTestingAbstractClassesAndTraits/PersonAbstractClass.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -607,5 +607,7 @@ return array(
     'forStubMockTesting\\Logger' => $baseDir . '/src/ForStubMockTesting/Logger.php',
     'forStubMockTesting\\Product' => $baseDir . '/src/ForStubMockTesting/Product.php',
     'forStubMockTesting\\User' => $baseDir . '/src/ForStubMockTesting/User.php',
+    'forTestingAbstractClassesAndTraits\\Employee' => $baseDir . '/src/ForTestingAbstractClassesAndTraits/Employee.php',
     'forTestingAbstractClassesAndTraits\\MyTrait' => $baseDir . '/src/ForTestingAbstractClassesAndTraits/MyTrait.php',
+    'forTestingAbstractClassesAndTraits\\PersonAbstractClass' => $baseDir . '/src/ForTestingAbstractClassesAndTraits/PersonAbstractClass.php',
 );

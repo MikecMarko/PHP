@@ -2,6 +2,7 @@
 
 namespace forTestingAbstractClassesAndTraits;
 
+
 abstract class PersonAbstractClass
 {
     protected string $firstName;
@@ -17,7 +18,7 @@ abstract class PersonAbstractClass
 
     public function showFullNameAndSalary()
     {
-        return $this->firstName. '' . $this->lastName. ' earns ' . $this->getSalary(). ' per month';
+        return $this->firstName. ' ' . $this->lastName. ' earns ' . $this->getSalary(). ' per month';
     }
 
 
