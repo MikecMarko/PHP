@@ -663,7 +663,10 @@ class ComposerStaticInitc6bee1f346a477a7faa94f001508aef2
         'TheSeer\\Tokenizer\\XMLSerializer' => __DIR__ . '/..' . '/theseer/tokenizer/src/XMLSerializer.php',
         'User' => __DIR__ . '/../..' . '/src/User.php',
         'WrongBmiDataException' => __DIR__ . '/../..' . '/src/Exceptions/WrongBmiDataException.php',
+        'forStubMockTesting\\Logger' => __DIR__ . '/../..' . '/src/ForStubMockTesting/Logger.php',
+        'forStubMockTesting\\Product' => __DIR__ . '/../..' . '/src/ForStubMockTesting/Product.php',
         'forStubMockTesting\\User' => __DIR__ . '/../..' . '/src/ForStubMockTesting/User.php',
+        'forTestingAbstractClassesAndTraits\\MyTrait' => __DIR__ . '/../..' . '/src/ForTestingAbstractClassesAndTraits/MyTrait.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
