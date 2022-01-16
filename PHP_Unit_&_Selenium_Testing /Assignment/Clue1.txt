@@ -1,0 +1,6 @@
+
+
+
+
+To unit test the internal logic we do not need Datasource class at all. You should make it possible to mock it.
+It is not good practice to keep built-in PHP function inside class that we want to unit test.

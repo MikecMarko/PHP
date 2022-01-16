@@ -1,0 +1,6 @@
+
+
+
+
+Get Datasource instance outside the getRandomQoute() method. Inject it via constructor.
+Create class wrapper for mt_rand() function and inject the result (integer) via setter method.
