@@ -7,8 +7,6 @@ use PHPUnit\Framework\TestCase;
 class ProductTest extends TestCase
 {
     public function testSaveProduct() {
-        $logger = new Logger();
-
 //        $loggerMock = $this->getMockBuilder(Logger::class)->disableOriginalConstructor()
 //            ->setMethods(['log'])
 //            ->getMock();

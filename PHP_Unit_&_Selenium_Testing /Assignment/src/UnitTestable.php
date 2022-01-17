@@ -6,7 +6,6 @@
  */
 class DataSource
 {
-
     public $data = [
 
         'Albert Einstein' => [
@@ -30,19 +29,16 @@ class DataSource
 
     public function fetchQuote($person)
     {
-        $random = mt_rand(0, 2);
+        $random = mt_rand(0,2);
         return $this->data[$person][$random];
     }
 }
 
 class NumberRandomizer
 {
-    protected $generatedNumber;
-
-    public function setRandomNumber()
+    public function getRandomNumber($a, $b): int
     {
-        $this->generatedNumber = mt_rand(0,2);
-        return $this->generatedNumber;
+        return mt_rand($a, $b);
     }
 }
 
@@ -51,25 +47,30 @@ class NumberRandomizer
  */
 class UnitTestable {
 
-    protected DataSource $quotes;
-    protected DataSource $randomizer;
+    protected $quote;
+    protected $generatedNumber;
 
-    public function __construct()
+    public function __construct(DataSource $datasource)
     {
-        $this->quotes = new DataSource();
-        $this->randomizer = new NumberRandomizer();
+        $this->quote = $datasource;
+    }
+
+    public function setRandomNumber($randomNumber)
+    {
+        $this->generatedNumber = $randomNumber;
     }
 
     public function getRandomQoute()
     {
         $body = 'Today the quote from ';
 
-        $random = $this->randomizer->setRandomNumber();
+        $random = $this->generatedNumber;
         if($random == 0) $body .= 'one the famous physicist '.$person='Albert Einstein';
         elseif($random == 1) $body .= 'head of the Catholic Church and sovereign of the Vatican City '.$person='Pope John Paul II';
         elseif($random == 2) $body .= 'the co-founder of Microsoft Corporation '.$person='Bill Gates';
 
-        $quote = $this->quotes->fetchQuote($person);
+        $quotes = $this->quote;
+        $quote = $quotes->fetchQuote($person);
 
         return $body.': '.$quote;
     }
@@ -77,5 +78,8 @@ class UnitTestable {
 
 
 // example usage:
-$obj = new UnitUntestable();
-echo $obj->getRandomQoute();
+$dailyQuote = new UnitTestable(new DataSource() );
+$generatedNumber = new NumberRandomizer();
+
+$dailyQuote->setRandomNumber($generatedNumber->getRandomNumber(0,2));
+echo $dailyQuote->getRandomQoute();

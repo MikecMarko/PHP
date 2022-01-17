@@ -5,8 +5,7 @@
  "autoload": {
   "classmap": [
    "src/",
-    "../PHPUnitBasics/src/Exceptions",
-   "tests/Traits"
+   "tests/"
   ]
  }
 }
