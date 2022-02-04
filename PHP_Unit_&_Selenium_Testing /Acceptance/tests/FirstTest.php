@@ -35,6 +35,15 @@ class FirstTest extends PHPUnit_Extensions_Selenium2TestCase {
 
         $link = $this->byId('google-link-id');
         $this->assertSame('Google', $link->text());
-        
+
+        //$this->clickOnElement('google-link-id');
+        $link->click();
+        $this->assertEquals('Google', $this->title());
+        $this->back();
+
+        $content = $this->byTag('body')->text();
+        $this->assertContains('Every html element in one place.', $content);
+
+        $this->assertContains('At vero eos et accusamus', $this->source());
     }
 }
