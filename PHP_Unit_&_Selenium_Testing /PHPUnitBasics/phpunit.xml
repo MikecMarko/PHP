@@ -10,7 +10,6 @@
          convertDeprecationsToExceptions="true"
          verbose="true"
          colors="true"
-         testdox="true"
 >
     <testsuites>
         <testsuite name="default">
