@@ -35,4 +35,17 @@ class SecondTest extends PHPUnit_Extensions_Selenium2TestCase {
         //we can also click it without any validation, check video
         $this->assertContains('The form was sent!', $this->source());
     }
+
+    public function testInCompleteTest()
+    {
+//        $this->markTestIncomplete('Something isnt supported');
+//
+//        $this->assertSame('Jonh', 'John');
+
+        $this->url('');
+        $this->cookie()->add('user', 'logged-in')->set();
+        // $this->>cookie()->remove('user);
+        $authCookie = $this->cookie()->get('user');
+        $this->assertEquals('logged-in', $authCookie);
+    }
 }

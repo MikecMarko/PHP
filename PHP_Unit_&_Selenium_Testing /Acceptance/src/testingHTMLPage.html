@@ -181,7 +181,7 @@ the comments to familiarize yourself with HTML.
 
             <div>
                 <label for="first-name">First Name</label>
-                <input type="text" value="Adam" id="first-name"/>
+                <input type="text" value="mMrtko" id="first-name"/>
             </div>
 
             <div>
@@ -440,6 +440,10 @@ the comments to familiarize yourself with HTML.
         <address>email@email.com</address>
     </footer>
 </section>
-
+    <script>
+        setTimeout(function(){
+            document.getElementById("first-name").value = 'Adam'
+        }, 3000);
+    </script>
 </body>
 </html>
